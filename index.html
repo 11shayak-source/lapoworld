@@ -70,6 +70,30 @@
   .footer-links a:hover {
     color: #fca311; /* Matches the orange theme */
   }
+
+  /* Custom CSS for floating call button */
+  .floating-call-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25D366; /* Vibrant green for high conversion */
+    color: #ffffff !important;
+    padding: 14px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  .floating-call-btn:hover {
+    transform: translateY(-3px);
+    background-color: #1ebc59;
+  }
 </style>
 
 </head>
@@ -385,6 +409,10 @@ Santoshpur, Kolkata – 700075
 </div>
 
 </footer>
+
+<a href="tel:9073009970" class="floating-call-btn">
+  📞 Call (9073009970)
+</a>
 
 <script src="templatemo-606-string-scripts.js"></script>
 
