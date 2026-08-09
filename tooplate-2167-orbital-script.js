@@ -1,11 +1,7 @@
 /*
-
-    Tooplate 2167 Orbital
-
-    https://www.tooplate.com/view/2167-orbital
-
-    Free HTML CSS Template
-
+    Lapoworld Orbital Theme
+    Adapted for Technical Repair Services
+    Original framework by Tooplate
 */
 
 (function () {
@@ -73,8 +69,8 @@
   var baseDrift = reduceMotion ? 0 : 0.12;   /* gentle auto rotation per frame */
   var friction = 0.94;                        /* momentum decay after a flick */
   var MAX_VELOCITY = 7;
-  var DRAG_SENS = 0.32;                        /* degrees of spin per pixel dragged */
-  var WHEEL_SENS = 0.05;                       /* spin from horizontal scroll or trackpad */
+  var DRAG_SENS = 0.32;                       /* degrees of spin per pixel dragged */
+  var WHEEL_SENS = 0.05;                      /* spin from horizontal scroll or trackpad */
 
   var dragging = false;
   var lastX = 0;
@@ -86,6 +82,7 @@
   var rangeY = 28;   /* horizontal pan */
   var rangeX = 30;   /* vertical tilt swing */
   var biasX = 10;    /* lean the ring upward at rest, flip to negative to lean down */
+  
   if (!reduceMotion) {
     window.addEventListener('mousemove', function (e) {
       var mx = (e.clientX / window.innerWidth) - 0.5;
@@ -103,6 +100,7 @@
       velocity = 0;
       stage.classList.add('dragging');
     });
+    
     window.addEventListener('pointermove', function (e) {
       if (!dragging) return;
       var dx = e.clientX - lastX;
@@ -111,11 +109,13 @@
       rotation += step;
       velocity = clamp(step, -MAX_VELOCITY, MAX_VELOCITY);
     });
+    
     function endDrag() {
       if (!dragging) return;
       dragging = false;
       stage.classList.remove('dragging');
     }
+    
     window.addEventListener('pointerup', endDrag);
     window.addEventListener('pointercancel', endDrag);
 
@@ -161,6 +161,7 @@
   } else {
     revealEls.forEach(function (el) { el.classList.add('visible'); });
   }
+  
   setTimeout(function () {
     revealEls.forEach(function (el) { el.classList.add('visible'); });
   }, 3000);
@@ -168,11 +169,13 @@
   /* Mobile menu */
   var toggle = document.querySelector('.menu-toggle');
   var mobileMenu = document.querySelector('.mobile-menu');
+  
   if (toggle && mobileMenu) {
     toggle.addEventListener('click', function () {
       var open = mobileMenu.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
+    
     mobileMenu.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
         mobileMenu.classList.remove('open');
@@ -180,6 +183,7 @@
       });
     });
   }
+
   /* Visuals toggle: crossfade panels between text and images */
   var switchBtn = document.getElementById('visualsSwitch');
   if (switchBtn) {
@@ -190,7 +194,7 @@
     });
   }
 
-  /* Zoom toggle: scale the whole ring 20 percent larger */
+  /* Zoom toggle: scale the whole ring 24 percent larger */
   var zoomSwitch = document.getElementById('zoomSwitch');
   var ringTilt = document.querySelector('.ring-tilt');
   if (zoomSwitch && ringTilt) {
