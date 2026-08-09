@@ -661,35 +661,37 @@ a { color: inherit; text-decoration: none; }
     margin-top: 15vh; 
   }
   
-  /* LOCKS THE CONTAINER TO THE SCREEN SIZE (Fixed width overflow) */
+  /* FIXED: Bypasses the 1px container trap by using safe view-width */
   .hero-text {
     top: 20%;
     transform: translate(-50%, -50%) translateZ(40px);
     z-index: 10;
-    width: 100%; 
-    padding: 0 20px;
-    box-sizing: border-box;
+    width: 92vw; 
+    max-width: none;
+    padding: 0;
   }
   
-  /* Shrinks the massive letter spacing that was breaking the screen width */
+  /* Adjusts the blue top text to fit safely on one line */
   .hero-text .eyebrow {
-    font-size: 9px;
-    letter-spacing: 3px; 
+    font-size: 10px;
+    letter-spacing: 2px; 
     margin-bottom: 12px;
-    white-space: normal;
+    white-space: nowrap;
   }
   
-  /* Locks the headline to a safe mobile size */
+  /* Locks the main headline so words don't awkwardly break apart */
   .hero-text h1 {
-    font-size: clamp(2rem, 8vw, 2.6rem); 
+    font-size: clamp(2.4rem, 10vw, 3.2rem); 
     line-height: 1.1;
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 0 12px rgba(0, 0, 0, 0.9);
   }
   
+  /* Forces the paragraph text to stretch back out normally */
   .hero-text p {
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     margin-top: 16px;
+    max-width: 100%;
   }
 }
 
