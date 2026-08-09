@@ -641,6 +641,11 @@ a { color: inherit; text-decoration: none; }
   transform: translateY(0);
 }
 
+/* RESPONSIVE MOBILE FIXES */
+@media (max-width: 900px) {
+  .features { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 720px) {
   .nav-links { display: none; }
   .menu-toggle { display: flex; }
@@ -653,17 +658,17 @@ a { color: inherit; text-decoration: none; }
     margin-top: 15vh; 
   }
   
-  /* LOCKS THE CONTAINER TO THE SCREEN SIZE */
+  /* LOCKS THE CONTAINER TO THE SCREEN SIZE (Fixed width overflow) */
   .hero-text {
-    top: 25%;
+    top: 20%;
     transform: translate(-50%, -50%) translateZ(40px);
     z-index: 10;
-    width: 100vw;
-    padding: 0 24px;
+    width: 100%; /* Changed from 100vw to 100% to prevent horizontal scrollbars */
+    padding: 0 20px;
     box-sizing: border-box;
   }
   
-  /* THE FIX: Shrinks the massive letter spacing that was breaking the screen width */
+  /* Shrinks the massive letter spacing that was breaking the screen width */
   .hero-text .eyebrow {
     font-size: 9px;
     letter-spacing: 3px; 
@@ -671,9 +676,9 @@ a { color: inherit; text-decoration: none; }
     white-space: normal;
   }
   
-  /* Locks the headline to a safe mobile size */
+  /* Locks the headline to a safe mobile size that automatically scales down on tiny screens */
   .hero-text h1 {
-    font-size: 2.4rem; 
+    font-size: clamp(2rem, 8vw, 2.6rem); 
     line-height: 1.1;
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 0 12px rgba(0, 0, 0, 0.9);
   }
