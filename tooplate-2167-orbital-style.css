@@ -641,15 +641,6 @@ a { color: inherit; text-decoration: none; }
   transform: translateY(0);
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .features { grid-template-columns: 1fr; }
-}
-/* Responsive */
-@media (max-width: 900px) {
-  .features { grid-template-columns: 1fr; }
-}
-
 @media (max-width: 720px) {
   .nav-links { display: none; }
   .menu-toggle { display: flex; }
@@ -659,26 +650,38 @@ a { color: inherit; text-decoration: none; }
   /* SHIFTS THE ENTIRE ROTATING RING DOWN */
   .ring-tilt { 
     --tiltX: -14deg; 
-    margin-top: 20vh; /* Pushes the cards safely into the lower half */
+    margin-top: 15vh; 
   }
   
-  /* SHIFTS THE TEXT UP AND FIXES DISTORTION */
+  /* LOCKS THE CONTAINER TO THE SCREEN SIZE */
   .hero-text {
-    top: 22%; /* Pulls the text up into the empty space */
-    /* Back to 40px Z-depth to stop the magnifying glass effect */
+    top: 25%;
     transform: translate(-50%, -50%) translateZ(40px);
     z-index: 10;
-    width: 90vw;
+    width: 100vw;
+    padding: 0 24px;
+    box-sizing: border-box;
   }
   
+  /* THE FIX: Shrinks the massive letter spacing that was breaking the screen width */
+  .hero-text .eyebrow {
+    font-size: 9px;
+    letter-spacing: 3px; 
+    margin-bottom: 12px;
+    white-space: normal;
+  }
+  
+  /* Locks the headline to a safe mobile size */
   .hero-text h1 {
-    font-size: clamp(2rem, 10vw, 2.8rem); /* Safe, controlled mobile sizing */
+    font-size: 2.4rem; 
+    line-height: 1.1;
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 0 12px rgba(0, 0, 0, 0.9);
   }
   
   .hero-text p {
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
     font-size: 0.9rem;
+    margin-top: 16px;
   }
 }
 
