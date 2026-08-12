@@ -188,7 +188,7 @@
         
         // Only prevent default if it's an internal # anchor link
         var targetId = this.getAttribute('href');
-        if (targetId.startsWith('#')) {
+        if (targetId && targetId.startsWith('#')) {
           e.preventDefault();
           var targetSection = document.querySelector(targetId);
           
