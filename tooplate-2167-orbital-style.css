@@ -72,6 +72,8 @@ a { color: inherit; text-decoration: none; }
   justify-content: space-between;
   padding: 26px clamp(20px, 5vw, 64px);
   backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Added subtle edge definition */
 }
 
 .logo {
@@ -122,6 +124,24 @@ a { color: inherit; text-decoration: none; }
 }
 .nav-links a:hover::before { transform: translateY(-50%) scale(1); }
 
+/* Custom WhatsApp CTA in Navigation */
+.nav-links a.nav-cta {
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-shadow: none;
+  transition: all 0.3s ease;
+}
+.nav-links a.nav-cta::before { display: none; }
+.nav-links a.nav-cta:hover {
+  background: var(--cyan);
+  color: var(--void);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+  text-shadow: none;
+}
+
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -130,11 +150,23 @@ a { color: inherit; text-decoration: none; }
   border: none;
   cursor: pointer;
   padding: 6px;
+  z-index: 60; /* Ensure it stays above mobile menu */
 }
 .menu-toggle span {
   width: 24px; height: 2px;
   background: var(--white);
   transition: transform 0.4s var(--ease), opacity 0.4s var(--ease);
+}
+
+/* Mobile menu toggle animation state */
+.menu-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.menu-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* Mobile menu overlay */
@@ -144,6 +176,7 @@ a { color: inherit; text-decoration: none; }
   z-index: 49;
   background: rgba(5, 5, 5, 0.96);
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -232,6 +265,7 @@ a { color: inherit; text-decoration: none; }
   max-width: 440px;
   margin-left: auto;
   margin-right: auto;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8); /* Added shadow for readability over ring */
 }
 
 /* The orbital ring */
@@ -382,6 +416,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 10px;
   letter-spacing: 2px;
   color: var(--faint);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
 }
 .switch {
   position: relative;
@@ -427,6 +462,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(4px);
 }
 .spacing-step {
   width: 26px;
@@ -516,6 +552,7 @@ a { color: inherit; text-decoration: none; }
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   overflow: hidden;
   transition: transform 0.7s var(--ease), background 0.7s var(--ease);
 }
@@ -544,6 +581,7 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 2px;
   color: var(--violet);
   margin-bottom: 22px;
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
 }
 .feature h3 {
   font-size: 1.4rem;
@@ -608,27 +646,14 @@ a { color: inherit; text-decoration: none; }
   box-shadow: 0 0 40px rgba(139, 92, 246, 0.5), 0 0 18px rgba(6, 182, 212, 0.4);
 }
 
-/* Footer */
+/* Footer & New Structural Alignments */
 .footer {
   position: relative;
   z-index: 2;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 44px clamp(20px, 6vw, 64px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
+  padding: 44px 0 20px 0; /* Adjusted padding to accommodate the new grid */
+  background: rgba(0,0,0,0.4);
 }
-
-.footer .credit {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 1px;
-  color: var(--faint);
-}
-.footer .credit a { color: var(--dim); transition: color 0.4s var(--ease); }
-.footer .credit a:hover { color: var(--cyan); }
 
 /* Scroll reveal */
 .reveal {
@@ -692,6 +717,16 @@ a { color: inherit; text-decoration: none; }
     font-size: 0.95rem;
     margin-top: 16px;
     max-width: 100%;
+  }
+
+  /* Adjust footer layout for mobile */
+  .footer-grid {
+    flex-direction: column;
+    text-align: center !important;
+  }
+  
+  .footer-brand p {
+    margin: 15px auto !important;
   }
 }
 
