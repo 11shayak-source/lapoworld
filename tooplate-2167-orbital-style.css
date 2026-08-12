@@ -73,7 +73,7 @@ a { color: inherit; text-decoration: none; }
   padding: 26px clamp(20px, 5vw, 64px);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Added subtle edge definition */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .logo {
@@ -81,7 +81,6 @@ a { color: inherit; text-decoration: none; }
   color: var(--white);
 }
 
-/* Lapoworld specific two-line logo formatting */
 .logo-text {
   display: inline-block;
   line-height: 1;
@@ -150,7 +149,7 @@ a { color: inherit; text-decoration: none; }
   border: none;
   cursor: pointer;
   padding: 6px;
-  z-index: 60; /* Ensure it stays above mobile menu */
+  z-index: 60;
 }
 .menu-toggle span {
   width: 24px; height: 2px;
@@ -158,7 +157,6 @@ a { color: inherit; text-decoration: none; }
   transition: transform 0.4s var(--ease), opacity 0.4s var(--ease);
 }
 
-/* Mobile menu toggle animation state */
 .menu-toggle[aria-expanded="true"] span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
@@ -265,7 +263,7 @@ a { color: inherit; text-decoration: none; }
   max-width: 440px;
   margin-left: auto;
   margin-right: auto;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8); /* Added shadow for readability over ring */
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 }
 
 /* The orbital ring */
@@ -299,7 +297,6 @@ a { color: inherit; text-decoration: none; }
   transition: transform 0.7s var(--ease), box-shadow 0.7s var(--ease);
   cursor: pointer;
 }
-/* 1px gradient border via masked pseudo element */
 .panel::after {
   content: '';
   position: absolute;
@@ -337,7 +334,6 @@ a { color: inherit; text-decoration: none; }
   color: var(--faint);
 }
 
-/* Two stacked faces per panel, crossfaded by the toggle with a staggered delay */
 .panel-face {
   position: absolute;
   inset: 0;
@@ -390,7 +386,6 @@ a { color: inherit; text-decoration: none; }
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95), 0 0 22px rgba(0, 0, 0, 0.7);
 }
 
-/* Toggle ON state */
 .visuals-on .panel-face--text { opacity: 0; }
 .visuals-on .panel-face--image { opacity: 1; }
 .visuals-on .panel-face--image img { transform: scale(1); }
@@ -454,7 +449,6 @@ a { color: inherit; text-decoration: none; }
   outline-offset: 4px;
 }
 
-/* 3 step ring spacing */
 .spacing {
   display: flex;
   gap: 3px;
@@ -487,7 +481,6 @@ a { color: inherit; text-decoration: none; }
 .spacing-step:nth-child(3) i { width: 11px; height: 11px; }
 .spacing-step.is-active { background: rgba(6, 182, 212, 0.14); }
 .spacing-step.is-active i { background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
-.spacing-step:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
 
 .scroll-cue {
   position: absolute;
@@ -523,7 +516,7 @@ a { color: inherit; text-decoration: none; }
 }
 .section-head {
   margin-bottom: 64px;
-  max-width: 620px;
+  max-width: 800px;
 }
 .section-head .eyebrow { text-align: left; margin-bottom: 18px; }
 .section-head h2 {
@@ -595,55 +588,94 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.62;
 }
 
-/* Closing call to action */
-.cta {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: clamp(100px, 16vh, 180px) 24px;
+/* ========================================== */
+/* NEW MASSIVE CONTENT BLOCK STYLING          */
+/* ========================================== */
+
+.content-block {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: clamp(30px, 5vw, 60px);
+  border-radius: 12px;
+  margin-bottom: 30px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
-.cta h2 {
-  font-size: clamp(2.2rem, 7vw, 4.6rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  text-shadow: 0 0 40px rgba(139, 92, 246, 0.4);
+.content-block h3 {
+  color: var(--cyan);
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.6rem;
 }
-.cta p {
-  margin: 24px auto 42px;
-  max-width: 460px;
+.content-block h3:first-child {
+  margin-top: 0;
+}
+.content-block p {
   color: var(--dim);
-  font-size: 1.02rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  font-size: 1.05rem;
 }
-.btn {
-  display: inline-block;
-  position: relative;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
-  letter-spacing: 3px;
-  padding: 18px 42px;
-  border-radius: 50px;
-  color: var(--white);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid transparent;
-  background-clip: padding-box;
-  transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease);
+.content-block ul {
+  color: var(--dim);
+  line-height: 1.8;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+/* Ad Banners */
+.ad-banner {
+  width: 100%;
+  border-radius: 12px;
   overflow: hidden;
+  margin: 40px 0;
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.2);
+  transition: transform 0.4s ease;
 }
-.btn::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(to right, var(--violet), var(--cyan));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+.ad-banner:hover {
+  transform: scale(1.01);
 }
-.btn:hover {
-  transform: translateY(-3px) scale(1.04);
-  box-shadow: 0 0 40px rgba(139, 92, 246, 0.5), 0 0 18px rgba(6, 182, 212, 0.4);
+.ad-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Massive Call To Action Buttons */
+.massive-cta-btn {
+  display: inline-block;
+  padding: 18px 40px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 6px;
+  margin: 10px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-whatsapp {
+  background: #25D366;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+}
+.btn-whatsapp:hover {
+  background: #1eb956;
+  box-shadow: 0 0 30px rgba(37, 211, 102, 0.6);
+  transform: translateY(-3px);
+}
+.btn-gmail {
+  background: #EA4335;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(234, 67, 53, 0.4);
+}
+.btn-gmail:hover {
+  background: #d6382b;
+  box-shadow: 0 0 30px rgba(234, 67, 53, 0.6);
+  transform: translateY(-3px);
 }
 
 /* Footer & New Structural Alignments */
@@ -651,8 +683,8 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   z-index: 2;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 44px 0 20px 0; /* Adjusted padding to accommodate the new grid */
-  background: rgba(0,0,0,0.4);
+  padding: 60px 0 20px 0;
+  background: rgba(0,0,0,0.6);
 }
 
 /* Scroll reveal */
@@ -680,13 +712,11 @@ a { color: inherit; text-decoration: none; }
   :root { --ring-radius: 220px; }
   .panel { width: 124px; height: 168px; margin-left: -62px; margin-top: -84px; }
   
-  /* SHIFTS THE ENTIRE ROTATING RING DOWN */
   .ring-tilt { 
     --tiltX: -14deg; 
     margin-top: 15vh; 
   }
   
-  /* FIXED: Bypasses the 1px container trap by using safe view-width */
   .hero-text {
     top: 20%;
     transform: translate(-50%, -50%) translateZ(40px);
@@ -696,7 +726,6 @@ a { color: inherit; text-decoration: none; }
     padding: 0;
   }
   
-  /* Adjusts the blue top text to fit safely on one line */
   .hero-text .eyebrow {
     font-size: 10px;
     letter-spacing: 2px; 
@@ -704,14 +733,12 @@ a { color: inherit; text-decoration: none; }
     white-space: nowrap;
   }
   
-  /* Locks the main headline so words don't awkwardly break apart */
   .hero-text h1 {
     font-size: clamp(2.4rem, 10vw, 3.2rem); 
     line-height: 1.1;
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 0 12px rgba(0, 0, 0, 0.9);
   }
   
-  /* Forces the paragraph text to stretch back out normally */
   .hero-text p {
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
     font-size: 0.95rem;
@@ -719,7 +746,6 @@ a { color: inherit; text-decoration: none; }
     max-width: 100%;
   }
 
-  /* Adjust footer layout for mobile */
   .footer-grid {
     flex-direction: column;
     text-align: center !important;
@@ -727,6 +753,12 @@ a { color: inherit; text-decoration: none; }
   
   .footer-brand p {
     margin: 15px auto !important;
+  }
+
+  .massive-cta-btn {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
   }
 }
 
