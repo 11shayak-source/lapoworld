@@ -2,9 +2,11 @@
     Lapoworld Orbital Theme
     Adapted for Technical Repair Services
     Original framework by Tooplate
+    Enhanced for UX, Accessibility, and Haptics
 */
 
 (function () {
+  // Respect user OS settings for reduced motion
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* Position the orbital ring panels (markup lives in index.html) */
@@ -53,6 +55,9 @@
     spacingSteps.forEach(function (b) {
       b.classList.toggle('is-active', parseInt(b.getAttribute('data-space'), 10) === idx);
     });
+    
+    // Haptic feedback for modern mobile feel
+    if (navigator.vibrate) navigator.vibrate(10); 
   }
   spacingSteps.forEach(function (b) {
     b.addEventListener('click', function () {
@@ -66,7 +71,8 @@
 
   var rotation = 0;
   var velocity = 0;
-  var baseDrift = reduceMotion ? 0 : 0.12;   /* gentle auto rotation per frame */
+  // If user prefers reduced motion, halt the auto-spin completely
+  var baseDrift = reduceMotion ? 0 : 0.12;   
   var friction = 0.94;                        /* momentum decay after a flick */
   var MAX_VELOCITY = 7;
   var DRAG_SENS = 0.32;                       /* degrees of spin per pixel dragged */
@@ -166,7 +172,7 @@
     revealEls.forEach(function (el) { el.classList.add('visible'); });
   }, 3000);
 
-  /* Mobile menu */
+  /* Mobile menu logic & Smooth Scrolling */
   var toggle = document.querySelector('.menu-toggle');
   var mobileMenu = document.querySelector('.mobile-menu');
   
@@ -176,8 +182,25 @@
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
     
-    mobileMenu.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
+    // Add smooth scrolling to all navigation links
+    document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        
+        // Only prevent default if it's an internal # anchor link
+        var targetId = this.getAttribute('href');
+        if (targetId.startsWith('#')) {
+          e.preventDefault();
+          var targetSection = document.querySelector(targetId);
+          
+          if (targetSection) {
+            targetSection.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }
+        
+        // Close mobile menu on click
         mobileMenu.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');
       });
@@ -191,6 +214,7 @@
       var on = switchBtn.getAttribute('aria-checked') !== 'true';
       switchBtn.setAttribute('aria-checked', on ? 'true' : 'false');
       document.body.classList.toggle('visuals-on', on);
+      if (navigator.vibrate) navigator.vibrate(15); // Haptic feedback
     });
   }
 
@@ -202,6 +226,7 @@
       var on = zoomSwitch.getAttribute('aria-checked') !== 'true';
       zoomSwitch.setAttribute('aria-checked', on ? 'true' : 'false');
       ringTilt.style.setProperty('--zoom', on ? '1.24' : '1');
+      if (navigator.vibrate) navigator.vibrate(20); // Haptic feedback
     });
   }
 })();
