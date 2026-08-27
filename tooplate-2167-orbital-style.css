@@ -118,22 +118,27 @@ a { color: inherit; text-decoration: none; }
 }
 .nav-links a:hover::before { transform: translateY(-50%) scale(1); }
 
-/* Custom WhatsApp CTA in Navigation */
-.nav-links a.nav-cta {
+/* Standalone Top WhatsApp Button (Desktop & Mobile) */
+.top-whatsapp-btn {
   background: rgba(6, 182, 212, 0.1);
   border: 1px solid var(--cyan);
   color: var(--cyan);
   padding: 10px 20px;
   border-radius: 4px;
-  text-shadow: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   transition: all 0.3s ease;
+  margin-left: auto; /* Pushes button to the right side */
+  margin-right: 30px; /* Space between button and hamburger toggle */
+  text-shadow: none;
 }
-.nav-links a.nav-cta::before { display: none; }
-.nav-links a.nav-cta:hover {
+
+.top-whatsapp-btn:hover {
   background: var(--cyan);
   color: var(--void);
   box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
-  text-shadow: none;
 }
 
 .menu-toggle {
@@ -585,7 +590,18 @@ a { color: inherit; text-decoration: none; }
 /* RESPONSIVE MOBILE FIXES */
 @media (max-width: 900px) { .features { grid-template-columns: 1fr; gap: 30px; } }
 @media (max-width: 720px) {
-  .nav-links { display: none; } .menu-toggle { display: flex; }
+  .nav { padding: 16px 20px; } /* Tighter nav padding for mobile */
+  .nav-links { display: none; } 
+  .menu-toggle { display: flex; }
+  
+  /* Adjusted top WhatsApp button for mobile screens */
+  .top-whatsapp-btn {
+    padding: 6px 12px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-right: 15px; /* Spaces it perfectly next to the hamburger menu */
+  }
+
   :root { --ring-radius: 220px; }
   .panel { width: 124px; height: 168px; margin-left: -62px; margin-top: -84px; }
   .ring-tilt { --tiltX: -14deg; margin-top: 15vh; }
